@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туристическая система - Главная</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-globe-americas"></i>
+                    <span>ТурСистема</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tours.html" class="nav-link">Туры</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="clients.html" class="nav-link">Клиенты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="bookings.html" class="nav-link">Бронирования</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">Отчеты</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Система управления туристическими турами</h1>
+                <p class="hero-subtitle">Современное веб-приложение для эффективного управления туристическим бизнесом</p>
+                <div class="hero-buttons">
+                    <a href="tours.html" class="btn btn-primary">Просмотреть туры</a>
+                    <a href="clients.html" class="btn btn-secondary">Управление клиентами</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Возможности системы</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3>Управление турами</h3>
+                        <p>Создание, редактирование и управление туристическими маршрутами</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>База клиентов</h3>
+                        <p>Ведение базы данных клиентов с полной информацией</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Бронирования</h3>
+                        <p>Система бронирования туров с автоматическим расчетом стоимости</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Аналитика</h3>
+                        <p>Детальные отчеты и аналитика по продажам и популярности туров</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <h2 class="section-title">Статистика системы</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalTours">0</div>
+                        <div class="stat-label">Всего туров</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalClients">0</div>
+                        <div class="stat-label">Клиентов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalBookings">0</div>
+                        <div class="stat-label">Бронирований</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalRevenue">0 ₽</div>
+                        <div class="stat-label">Общий доход</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-tours">
+            <div class="container">
+                <h2 class="section-title">Последние добавленные туры</h2>
+                <div class="tours-grid" id="recentToursGrid">
+                    <!-- Туры будут загружены динамически -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ТурСистема</h3>
+                    <p>Современное решение для туристического бизнеса</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-envelope"></i> info@toursystem.ru</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Технологии</h3>
+                    <p>Delphi 10.2 + IIS + MS SQL Server</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ТурСистема. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

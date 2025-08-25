@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление турами - Туристическая система</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-globe-americas"></i>
+                    <span>ТурСистема</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tours.html" class="nav-link active">Туры</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="clients.html" class="nav-link">Клиенты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="bookings.html" class="nav-link">Бронирования</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">Отчеты</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Управление турами</h1>
+                <p class="page-subtitle">Создание, редактирование и управление туристическими маршрутами</p>
+            </div>
+        </section>
+
+        <section class="tours-controls">
+            <div class="container">
+                <div class="controls-grid">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Поиск туров...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">Все</button>
+                        <button class="filter-btn" data-filter="пляжный отдых">Пляжный отдых</button>
+                        <button class="filter-btn" data-filter="экскурсионный тур">Экскурсии</button>
+                        <button class="filter-btn" data-filter="горнолыжный тур">Горнолыжный</button>
+                    </div>
+                    <div class="sort-controls">
+                        <select class="sort-select">
+                            <option value="name-asc">По названию (А-Я)</option>
+                            <option value="price-asc">По цене (возрастание)</option>
+                            <option value="price-desc">По цене (убывание)</option>
+                            <option value="duration-asc">По длительности</option>
+                        </select>
+                    </div>
+                    <div class="action-controls">
+                        <button class="btn btn-primary" onclick="openModal('addTourModal')">
+                            <i class="fas fa-plus"></i> Добавить тур
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tours-list">
+            <div class="container">
+                <div class="tours-grid" id="toursGrid">
+                    <!-- Туры будут загружены динамически -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно добавления тура -->
+    <div id="addTourModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Добавить новый тур</h2>
+                <button class="modal-close" onclick="closeModal('addTourModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="tour-form" id="addTourForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tourName">Название тура *</label>
+                        <input type="text" id="tourName" name="tourName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tourType">Тип тура *</label>
+                        <select id="tourType" name="tourType" required>
+                            <option value="">Выберите тип</option>
+                            <option value="1">Пляжный отдых</option>
+                            <option value="2">Экскурсионный тур</option>
+                            <option value="3">Горнолыжный тур</option>
+                            <option value="4">Лечебный тур</option>
+                            <option value="5">Круиз</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="country">Страна *</label>
+                        <select id="country" name="country" required>
+                            <option value="">Выберите страну</option>
+                            <option value="1">Россия</option>
+                            <option value="2">Турция</option>
+                            <option value="3">Египет</option>
+                            <option value="4">Испания</option>
+                            <option value="5">Италия</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Город *</label>
+                        <select id="city" name="city" required>
+                            <option value="">Сначала выберите страну</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hotel">Отель *</label>
+                        <select id="hotel" name="hotel" required>
+                            <option value="">Сначала выберите город</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Длительность (дней) *</label>
+                        <input type="number" id="duration" name="duration" min="1" max="30" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="price">Цена (₽) *</label>
+                        <input type="number" id="price" name="price" min="0" step="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="maxTourists">Максимум туристов</label>
+                        <input type="number" id="maxTourists" name="maxTourists" min="1" max="100" value="20">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="startDate">Дата начала</label>
+                        <input type="date" id="startDate" name="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">Дата окончания</label>
+                        <input type="date" id="endDate" name="endDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Описание</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Подробное описание тура..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addTourModal')">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Сохранить тур</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно редактирования тура -->
+    <div id="editTourModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Редактировать тур</h2>
+                <button class="modal-close" onclick="closeModal('editTourModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="tour-form" id="editTourForm">
+                <input type="hidden" id="editTourId" name="tourId">
+                <!-- Аналогичные поля как в форме добавления -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('editTourModal')">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ТурСистема</h3>
+                    <p>Современное решение для туристического бизнеса</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-envelope"></i> info@toursystem.ru</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Технологии</h3>
+                    <p>Delphi 10.2 + IIS + MS SQL Server</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ТурСистема. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/tours.js"></script>
+</body>
+</html>
